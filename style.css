@@ -1,0 +1,481 @@
+h1 {
+    text-align: center; 
+    font-family: Georgia, serif;
+    margin-top: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #f7fafc;
+}
+
+/* --- 1. MAIN HEADER BRANDING LINE --- */
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 40px;
+  background-color: #ffffff; /* Crisp white background just like the top bar image */
+  border-bottom: 1px solid #002244;
+}
+
+.head img {
+  height: 65px; /* Keeps your logos compact and professional */
+  width: auto;
+  object-fit: contain;
+}
+
+.header-text {
+  text-align: center;
+  flex-grow: 1;
+  padding: 0 20px;
+}
+
+.header-text h1 {
+  margin: 0 0 4px 0;
+  font-size: 1.4rem;
+  color: #002244; /* Regal dark corporate blue */
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.header-text h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #4a5568; /* Slate grey for subtitles */
+  font-weight: 500;
+}
+
+/* --- 2. HORIZONTAL NAVIGATION BAR --- */
+#nav {
+  display: flex;
+  justify-content: center; /* Centers links horizontally */
+  background-color: #002244;
+  padding: 12px 0;
+  border-bottom: 1px solid #002244;
+}
+
+#nav a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0 24px;
+  position: relative;
+}
+
+/* Adds the elegant clean divider lines between each nav text link */
+#nav a:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background-color: #cbd5e0;
+}
+
+#nav a:hover {
+  color: #0066cc; /* Clean link change highlight color */
+}
+
+/* --- 3. LARGE HERO BANNER IMAGE (STANFORD STYLE) --- */
+#back-image {
+  position: relative;
+  width: 100%;
+  height: 480px; /* Expands the banner window height */
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Locks your main title onto the center axis */
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* Controls the full-bleed blurred banner background */
+#back-image::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/grad.jpg'); /* Swap with your background layout image file */
+  background-size: cover;
+  background-position: center;
+  filter: blur(4px); /* Clean, high-performance soft layout blur */
+  transform: scale(1.05); /* Stretches past the edges to mask blur artifact lines */
+  z-index: -2;
+}
+
+/* Dark subtle overlay tint to ensure white heading text stays readable */
+#back-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.35); /* Protects text contrast over the image */
+  z-index: -1;
+}
+
+/* --- 4. CENTER BANNER TEXT --- */
+#back-name h5 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 5.5rem; /* Massive, striking title style */
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6); /* Drop shadow gives true 3D text isolation */
+  font-family: serif; /* Classic serif texture matching the Stanford presentation */
+}
+
+/* --- MAIN WRAPPER LAYOUT --- */
+.mains {
+  max-width: 100%;         /* Limits width so text remains comfortable to read */
+  margin: 40px auto;        /* Centers the whole mission section on your webpage */
+  padding: 0 20px;
+  font-family: sans-serif;
+}
+
+h2 {
+  color: #002244;           /* Matches the corporate deep blue from your header */
+  font-size: 2rem;
+  margin-bottom: 24px;
+  border-bottom: 2px solid #021631;
+  padding-bottom: 8px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* --- THE SIDE-BY-SIDE SPLIT CONTAINER --- */
+.sec {
+  display: flex;            /* Triggers side-by-side row alignment */
+  align-items: flex-start;  /* Keeps the text aligned with the top of the photo */
+  gap: 32px;                /* Creates clean breathing room between photo and text */
+}
+
+/* --- LEFT SIDE: IMAGE SIZING --- */
+.sec img {
+  width: 220px;             /* Sets a professional profile photo width */
+  height: 280px;            /* Gives it a clean vertical aspect ratio */
+  object-fit: cover;        /* Prevents the image from being squished or distorted */
+  border-radius: 8px;       /* Adds subtly rounded modern corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft dropshadow to lift the portrait */
+
+  transform: translateX(-100px);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* --- RIGHT SIDE: STACKED CONTENT COLUMN --- */
+.presi {
+  display: flex;
+  flex-direction: column;   /* Stacks paragraphs vertically inside the column */
+  justify-content: center;
+
+  transform: translateX(100px);
+  opacity: 0;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}
+
+/* Typography styles to establish clear hierarchy */
+.presi .name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1a202c;
+  margin: 0 0 4px 0;       /* Tight margins keep text clumps connected */
+}
+
+.presi .title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #0066cc;          /* Highlights her role in a vibrant blue */
+  margin: 0 0 16px 0;      /* Pushes the mission statement text down slightly */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.presi .mission-text {
+  font-size: 1.1rem;
+  line-height: 1.6;        /* Increases line height for easy reading */
+  color: #4a5568;          /* Softer text color for body paragraphs */
+  margin: 0;
+  font-style: italic;
+}
+
+/*--ANIMATION TRIGGER---*/
+.sec.animate img {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.sec.animate .presi {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* --- MOBILE RESPONSIVENESS --- */
+@media (max-width: 600px) {
+  .sec {
+    flex-direction: column; /* Automatically stacks photo on top of text on phones */
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* --- THE MASTER ROW CONTAINER --- */
+/* --- MAIN GRID WRAPPER --- */
+.main {
+    display: grid;
+  /* Automatically creates 4 equal columns stretching across the screen width */
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  /*display: grid;
+  /* Automatically creates 4 equal columns stretching across the screen width */
+  /*grid-template-columns: repeat(4,1fr); */
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  gap: 24px;                 /* Sets clean grid alleyways between your cards */
+  font-family: sans-serif;
+}
+
+.campus-main {
+  display: grid;
+  /* Automatically creates 4 equal columns stretching across the screen width */
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  gap: 24px;                 /* Sets clean grid alleyways between your cards */
+  font-family: sans-serif;
+}
+
+/* --- HEADINGS SPAN ALL COLUMNS --- */
+.Headings {
+  /* This prevents the header from getting stuck in column 1 */
+  grid-column: span 4;       
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+}
+
+.Headings h2 {
+  margin: 0;
+  color: #002244;            /* Matches your theme deep corporate blue */
+  font-size: 2rem;
+}
+
+/* --- EVENT CARD COLUMNS --- */
+.seci {
+  background-color: #ffffff; /* Crisp card backing */
+  padding: 24px;
+  border-radius: 8px;
+  border-top: 4px solid #0066cc; /* Elegant blue stripe detailing on top */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;    /* Vertically stacks the inside h3 and p layers */
+
+transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+/* card sliding OUT to the left */
+.seci.exit {
+  transform: translateX(-120%);
+  opacity: 0;
+}
+
+/* card's starting position before sliding IN (off-screen right) */
+.seci.enter-start {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+/* card animating INTO place */
+.seci.enter-active {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+/* --- HEADERS AND DATES LAYOUT --- */
+.seci h3 {
+  margin: 0 0 14px 0;
+  font-size: 1.2rem;
+  color: #1a202c;
+  display: flex;
+  justify-content: space-between; /* Locks title to the left edge and date to the right */
+  align-items: center;
+  gap: 12px;
+}
+
+/* Custom styling for your inline date spans */
+.event-date {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4a5568;
+  background-color: #edf2f7; /* Soft gray badge backing */
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  white-space: nowrap;       /* Keeps dates perfectly on a single text row */
+}
+
+/* --- CARD PARAGRAPH BODY --- */
+.seci p {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #4a5568;
+  margin: 0;
+}
+
+/* --- TABLET & MOBILE VIEWPORT ADJUSTMENTS --- */
+@media (max-width: 1024px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr); /* Collapses into 2x2 grid layout on tablets */
+  }
+  .Headings {
+    grid-column: span 2;                 /* Keeps header spanning across both columns */
+  }
+}
+
+@media (max-width: 650px) {
+  .main {
+    grid-template-columns: 1fr;          /* Stacks cleanly into 1 master vertical column on mobile */
+    padding: 20px;
+  }
+  .Headings {
+    grid-column: span 1;
+  }
+}
+
+.Headings h2 {
+  margin: 0;
+  color: #002244;            /* Same theme deep corporate blue */
+  font-size: 2rem;           /* Identical header size */
+}
+
+/* --- INDIVIDUAL ACADEMIC CARD COLUMNS --- */
+.secit {
+  background-color: #ffffff; /* Crisp white card backing */
+  padding: 24px;
+  border-radius: 8px;
+  border-top: 4px solid #0066cc; /* Elegant blue stripe detailing to match previous design */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Same soft premium shadow */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;    /* Vertically stacks the inside image, h3, and p layers */
+}
+
+/* --- TOP IMAGE STYLE (ADAPTED FOR STANFORD LAYOUT) --- */
+.secit img {
+  width: 100%;               /* Forces the image to fill the card horizontally */
+  height: 200px;             /* Clean layout height for the images */
+  object-fit: cover;         /* Prevents photos from warping or distorting */
+  border-radius: 4px;        /* Soft corner rounding matching the card feel */
+  margin-bottom: 16px;       /* Adds a clean margin gap directly below the image frame */
+}
+
+/* --- MIDDLE CARD HEADING --- */
+.secit h3 {
+  margin: 0 0 12px 0;        /* Tight space directly above the description text */
+  font-size: 1.25rem;        /* Matches the font size of your previous event h3 headers */
+  color: #1a202c;            /* Near-black dark tone for maximum reading clarity */
+  font-weight: 700;
+}
+
+/* --- BOTTOM DESCRIPTION PARAGRAPH --- */
+.secit p {
+  margin: 0;
+  font-size: 0.95rem;        /* Same body text size as previous panels */
+  line-height: 1.55;         /* Matching readability scale */
+  color: #4a5568;            /* Same clean slate grey text tone */
+}
+
+#pic {
+  display: flex;
+  flex-direction: column;   /* Stacks paragraphs vertically inside the column */
+  justify-content: center;
+}
+
+/* --- SCREEN RESPONSIVENESS BREAKPOINTS --- */
+@media (max-width: 900px) {
+  .main {
+    grid-template-columns: repeat(2, 1fr); /* Drop layout down to 2 columns on tablets */
+  }
+  .Headings {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 650px) {
+  .main {
+    grid-template-columns: 1fr;          /* Full vertical single stack on small phones */
+    padding: 20px;
+  }
+  .Headings {
+    grid-column: span 1;
+  }
+}
+
+/*---FOOTER---*/
+.footer {
+  display: grid;
+  /* Automatically creates 4 equal columns stretching across the screen width */
+  grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); 
+  width: 100%;
+  box-sizing: border-box;
+  padding: 40px;
+  gap: 30px;                 /* Sets clean grid alleyways between your cards */
+  font-family: sans-serif;
+  background-color: #002244;
+}
+
+h4 {
+  color: #d67106;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.lists {
+  /* Step 1: Remove the bullet points */
+  list-style-type: none; 
+  
+  /* Step 2: Remove default browser padding/margin */
+  padding: 0;
+  margin: 0;
+}
+
+.lists a {
+  /* Optional: Removes standard blue hyperlink underline */
+  text-decoration: none; 
+  
+  /* Optional: Inherits your layout's dark color text */
+  color: #d67106; 
+  font-size: small;
+  font-weight: lighter;
+}
+
+.lists a:hover {
+  color: #ffffff; /* Clean link change highlight color */
+}
+
+.ft-para{
+  color: #d67106; 
+  font-size: small;
+  font-weight: lighter;
+}
+
+.footer-bottom {
+  grid-column: span 4; 
+  margin-top: 24px;
+  border-top: 2px solid #021631;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-copyright {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  text-align: center;
+  letter-spacing: 0.3px;
+}
