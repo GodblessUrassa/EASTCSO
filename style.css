@@ -224,7 +224,7 @@ h2 {
 .main {
     display: grid;
   /* Automatically creates 4 equal columns stretching across the screen width */
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+  grid-template-columns: repeat(3,1fr);
   /*display: grid;
   /* Automatically creates 4 equal columns stretching across the screen width */
   /*grid-template-columns: repeat(4,1fr); */
@@ -238,7 +238,7 @@ h2 {
 .campus-main {
   display: grid;
   /* Automatically creates 4 equal columns stretching across the screen width */
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); 
+  grid-template-columns: repeat(3,1fr); 
   width: 100%;
   box-sizing: border-box;
   padding: 40px;
@@ -249,7 +249,7 @@ h2 {
 /* --- HEADINGS SPAN ALL COLUMNS --- */
 .Headings {
   /* This prevents the header from getting stuck in column 1 */
-  grid-column: span 4;       
+  grid-column: span 3;       
   padding-bottom: 8px;
   margin-bottom: 12px;
 }
@@ -326,10 +326,10 @@ transition: transform 0.6s ease, opacity 0.6s ease;
 /* --- TABLET & MOBILE VIEWPORT ADJUSTMENTS --- */
 @media (max-width: 1024px) {
   .main {
-    grid-template-columns: repeat(2, 1fr); /* Collapses into 2x2 grid layout on tablets */
+    grid-template-columns: 1fr; /* Collapses into 2x2 grid layout on tablets */
   }
   .Headings {
-    grid-column: span 2;                 /* Keeps header spanning across both columns */
+    grid-column: span 1;                 /* Keeps header spanning across both columns */
   }
 }
 
@@ -395,10 +395,10 @@ transition: transform 0.6s ease, opacity 0.6s ease;
 /* --- SCREEN RESPONSIVENESS BREAKPOINTS --- */
 @media (max-width: 900px) {
   .main {
-    grid-template-columns: repeat(2, 1fr); /* Drop layout down to 2 columns on tablets */
+    grid-template-columns: 1fr; /* Drop layout down to 2 columns on tablets */
   }
   .Headings {
-    grid-column: span 2;
+    grid-column: span 1;
   }
 }
 
@@ -416,7 +416,7 @@ transition: transform 0.6s ease, opacity 0.6s ease;
 .footer {
   display: grid;
   /* Automatically creates 4 equal columns stretching across the screen width */
-  grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); 
+  grid-template-columns: repeat(3,1fr); 
   width: 100%;
   box-sizing: border-box;
   padding: 40px;
@@ -461,7 +461,7 @@ h4 {
 }
 
 .footer-bottom {
-  grid-column: span 4; 
+  grid-column: span 3; 
   margin-top: 24px;
   border-top: 2px solid #021631;
   padding: 20px 0;
@@ -478,4 +478,37 @@ h4 {
   color: rgba(255, 255, 255, 0.25);
   text-align: center;
   letter-spacing: 0.3px;
+}
+
+@media (max-width: 480px) {
+  .footer {
+    grid-template-columns: 1fr;
+    padding: 24px 16px;
+    gap: 20px;
+    text-align: center;
+  }
+    .footer-bottom {
+    grid-column: span 1;
+  }
+
+  h4 {
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+  }
+
+  .ft-para {
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  .lists a {
+    font-size: 0.9rem;
+    display: inline-block;
+    padding: 4px 0;
+  }
+
+  .footer-copyright {
+    font-size: 0.7rem;
+    padding: 0 12px;
+  }
 }
