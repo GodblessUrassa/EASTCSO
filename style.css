@@ -14,6 +14,7 @@ body {
 /* --- 1. MAIN HEADER BRANDING LINE --- */
 .head {
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   justify-content: space-between;
   padding: 15px 40px;
@@ -25,11 +26,13 @@ body {
   height: 65px; /* Keeps your logos compact and professional */
   width: auto;
   object-fit: contain;
+  flex-shrink:0;  
 }
 
 .header-text {
   text-align: center;
   flex-grow: 1;
+  min-width: 0;  
   padding: 0 20px;
 }
 
@@ -46,6 +49,31 @@ body {
   font-size: 0.95rem;
   color: #4a5568; /* Slate grey for subtitles */
   font-weight: 500;
+}
+
+/* --- KEEP .head DESKTOP-STYLE ON MOBILE, JUST SCALED DOWN --- */
+@media (max-width: 600px) {
+  .head {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .head img {
+    height: 40px;  /* Smaller logos so the row still fits */
+  }
+
+  .header-text {
+    padding: 0 8px;
+  }
+
+  .header-text h1 {
+    font-size: 0.8rem; /* Scaled down so the title stays on one line-ish without wrapping the layout */
+    letter-spacing: -0.2px;
+  }
+
+  .header-text h4 {
+    font-size: 0.65rem;
+  }
 }
 
 /* --- 2. HORIZONTAL NAVIGATION BAR --- */
@@ -124,6 +152,28 @@ body {
   letter-spacing: 2px;
   text-shadow: 0px 4px 12px rgba(0, 0, 0, 0.6); /* Drop shadow gives true 3D text isolation */
   font-family: serif; /* Classic serif texture matching the Stanford presentation */
+}
+
+/* --- SHRINK THE HERO BANNER ON MOBILE (was fixed 480px + 5.5rem text on all screens) --- */
+@media (max-width: 768px) {
+  #back-image {
+    height: 260px;
+  }
+
+  #back-name h5 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media (max-width: 480px) {
+  #back-image {
+    height: 180px;
+  }
+
+  #back-name h5 {
+    font-size: 1.8rem;
+  }
 }
 
 /* --- MAIN WRAPPER LAYOUT --- */
